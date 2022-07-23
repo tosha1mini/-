@@ -1,0 +1,87 @@
+это card
+pu
+fd 75
+rt 90
+fd 50
+rt 90
+pd
+repeat 2 [fd 150 rt 90 fd 100 rt 90]
+lt 45
+rt 90
+pu
+fd 15
+setfloodcolor "white 
+fill
+lt 180
+fd 15
+rt 135
+pu
+fd 75
+rt 90
+fd 50
+rt 90
+pd
+конец
+
+to check :a
+make "ynum item 2 :a
+make "ynum :ynum - 550
+make "stolb 0
+do.while [make "ynum :ynum+100 if :ynum > 0 [print "G-y stop] make "ynum :ynum+150 make "stolb :stolb + 1] [:ynum < 0]
+make "xnum item 1 :a
+make "xnum :xnum + 475
+make "rad 0  
+do.while [make "xnum :xnum-50 if :xnum < 0 [print "G-x stop] make "xnum :xnum-100 make "rad :rad + 1] [:xnum > 0]
+make "answer (List "Ряд :rad "Строка :stolb)
+print :answer
+tpshka :rad :stolb
+make "answer (list :answer)
+print :answer
+end
+
+to fin
+cs
+rt 90
+label "FIN
+lt 90
+end
+
+to main
+cs
+pole
+mouseon [check mousepos] [] [] [fin mouseoff] []
+end
+
+это pole
+fullscreen
+setfloodcolor [35 113 54]
+fill
+setpensize 4
+setpencolor [210 0 0]
+pu
+fd 375
+lt 90 
+fd 375
+lt 90 
+pd
+repeat 6 [repeat 4 [card pu fd 250 pd] pu lt 90 fd 150 rt 90 pd]
+pu
+lt 90 
+fd 100
+lt 90
+конец
+
+это tpshka :rad :stolb
+pu
+setxy -525+:rad*150 625-:stolb*250
+конец
+
+пусть "a [79 38]
+пусть "answer [[Ряд 6 Строка 3]]
+пусть "answer2 [[Ряд 6 Строка 1]]
+пусть "rad 6
+пусть "stolb 3
+пусть "x 67
+пусть "xnum -54
+пусть "y 102
+пусть "ynum 82
